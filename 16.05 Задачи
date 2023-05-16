@@ -1,0 +1,59 @@
+№1
+minutes = int(input("Введите количество минут: "))
+hours = minutes // 60
+remaining_minutes = minutes % 60
+print(f"{minutes} минут - это {hours} часов и {remaining_minutes} минут.")
+№2
+a = int(input("Введите минимальное количество часов сна: "))
+b = int(input("Введите максимальное количество часов сна: "))
+c = int(input("Введите количество часов сна Ани: "))
+if c < a:
+    print("Недосып")
+elif c > b:
+    print("Пересып")
+else:
+    print("Это нормально")
+№3 
+import math
+a = float(input("Введите длину первой стороны треугольника: "))
+b = float(input("Введите длину второй стороны треугольника: "))
+c = float(input("Введите длину третьей стороны треугольника: "))
+p = (a+b+c)/2
+s = math.sqrt(p*(p-a)*(p-b)*(p-c))
+print(f"Площадь треугольника равна {s}")
+№4
+import math
+shape = input("Введите тип фигуры комнаты (треугольник, прямоугольник, круг): ")
+if shape == "треугольник":
+    a = float(input("Введите длину первой стороны: "))
+    b = float(input("Введите длину второй стороны: "))
+    c = float(input("Введите длину третьей стороны: "))
+    p = (a + b + c) / 2
+    s = math.sqrt(p * (p - a) * (p - b) * (p - c))
+    print(f"Площадь треугольника равна {s}")
+elif shape == "прямоугольник":
+    a = float(input("Введите длину первой стороны: "))
+    b = float(input("Введите длину второй стороны: "))
+    s = a * b
+    print(f"Площадь прямоугольника равна {s}")
+elif shape == "круг":
+    r = float(input("Введите радиус круга: "))
+    s = math.pi * r ** 2
+    print(f"Площадь круга равна {s}")
+else:
+    print(f"Неизвестный тип фигуры: {shape}")
+№5
+n = int(input("Введите количество программистов: "))
+if n % 10 == 1 and n % 100 != 11:
+    print(n, "программист")
+elif n % 10 in (2, 3, 4) and n % 100 not in (12, 13, 14):
+    print(n, "программиста")
+else:
+    print(n, "программистов")
+№6
+ticket_number = input("Введите номер билета (6 цифр): ")
+ticket_number_list = list(map(int, ticket_number))
+if sum(ticket_number_list[:3]) == sum(ticket_number_list[3:]):
+    print("Билет счастливый!")
+else:
+    print("Билет несчастливый :(")

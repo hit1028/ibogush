@@ -1,0 +1,36 @@
+№1
+def seven_wonders_science(*a):
+    return 7*min(a) + sum(x*x for x in a)
+№2
+def disemvowel(string):
+    return "".join(c for c in string if c.lower() not in "aeiou")
+№3
+def Descending_Order(num):
+    return int("".join(sorted(str(num), reverse=True)))
+№4
+def xo(s):
+    s = s.lower()
+    return s.count('x') == s.count('o')
+№5
+def number(bus_stops):
+    return sum([stop[0] - stop[1] for stop in bus_stops])
+№6
+def is_triangle(a, b, c):
+    return (a<b+c) and (b<a+c) and (c<a+b)
+№7
+def solution(string, ending):
+    return string.endswith(ending)
+№8
+def number(lines):
+  return ['%d: %s' % v for v in enumerate(lines, 1)]
+№9
+from itertools import count
+
+def int_rac(n, guess):
+    for i in count(1):
+        last_guess, guess = guess, (guess + n // guess) // 2
+        if abs(last_guess - guess) < 1:
+            return i
+№10
+def accum(s):
+    return '-'.join(c.upper() + c.lower() * i for i, c in enumerate(s))

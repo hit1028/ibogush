@@ -1,0 +1,21 @@
+№6
+n = int(input())i = 0
+while i*i <= n:    i += 1
+print(i)
+№7
+a = int(input("Введите число A: "))b = int(input("Введите число B: "))
+if a >= b:    print("Ошибка: A должно быть меньше B")
+else:
+    i = a + 1    while i < b:
+        print(i)        i += 1
+№8
+for i in range(1, 20):
+   print(i, "rubl = ",i * 81, "usd")
+№9
+n = int(input())i = 0
+while i*i <= n:    i += 1
+print(i)
+№10
+e =int(input())
+for i in range(1, 20):
+    print(e ** i)

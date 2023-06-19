@@ -1,0 +1,159 @@
+№1
+def decompose(num):
+    mul=2
+    res=[[]]
+    while True:
+        power=0
+        while mul**(power+1)<=num:
+            power+=1
+        if power<=1:
+            break
+        num-=mul**power
+        mul+=1
+        res[0].append(power)
+    res.append(num)
+    return res
+№2
+в отдельном файле
+№3
+def likes(names):
+    if len(names)==0:
+        return "no one likes this"
+    elif len(names)==1:
+        return names[0]+" likes this"
+    elif len(names)==2:
+        return names[0]+" and "+names[1]+" like this"
+    elif len(names)==3:
+        return names[0]+", "+names[1]+" and "+names[2]+" like this"
+    elif len(names)>=4:
+        return names[0]+", "+names[1]+" and "+str(len(names)-2)+" others like this"
+№4
+def vowel_back(st):
+    res=""
+    for i in st:
+        if i in "aiu":
+            temp=chr(ord("a")+(ord(i)-ord("a")-5)%26)
+            res+=i if temp in "code" else temp
+        elif i =="c" or i=="o":
+            res+=chr(ord("a")+(ord(i)-ord("a")-1)%26)
+        elif i=="d" or i=="e":
+            res+="a"
+        else:
+            temp=chr(ord("a")+(ord(i)-ord("a")+9)%26)
+            res+=i if temp in "code" else temp
+    return res
+№5
+def count_smileys(arr):
+    total=0
+    for i in arr:
+        if i in ":):D;);D:-):-D;-);-D:~):~D;~);~D":
+            total+=1
+    return total
+№6
+def mean(town, strng):
+    total=0
+    for i in strng.split("\n"):
+        res=i.split(":")
+        if res[0]==town:
+            for data in res[1].split(","):
+                total+=float(data.split()[1])
+    return total/12 if total else -1
+def variance(town, strng):
+    total=0
+    average=mean(town, strng)
+    for i in strng.split("\n"):
+        res=i.split(":")
+        if res[0]==town:
+            for data in res[1].split(","):
+                total+=(float(data.split()[1])-average)**2
+    return total/12 if total else -1
+№7
+def group_groceries(groceries):
+    dict={"fruit":[], "meat":[], "other":[], "vegetable":[]}
+    for i in groceries.split(","):
+        items=i.split("_")
+        if not items[0] in ["fruit", "meat", "vegetable"]:
+            dict["other"].append(items[1])
+        else:
+            dict[items[0]].append(items[1])
+    temp={k: ",".join(sorted(v)) for k,v in dict.items()}
+    return "\n".join(f"{i}:{j}" for i,j in temp.items())
+№8
+from math import gcd
+def largest_power(n):
+    if n==1:
+        return (0, -1)
+    elif n<5:
+        return (1, -1)
+    temp=n-1
+    while temp>0:
+        res=factorization(temp)
+        if len(res)!=1:
+            if len(set(res))==1:
+                next=gen_factors(len(res))
+                return (temp, len(next))
+            else: 
+                solution=[]
+                flag=True
+                for i in set(res):
+                    if res.count(i)<2:
+                        flag=False
+                        break
+                    solution.append(res.count(i))
+                if flag:
+                    for i in range(1, len(solution)):
+                        if i!=1:
+                            check=gcd(check, solution[i])
+                        else:
+                            check=gcd(solution[i], solution[i-1])
+                    if check>1:
+                        for i in solution:
+                            if i%check!=0:
+                                flag=False
+                                break
+                        if flag:
+                            next=gen_factors(check) 
+                            return (temp, len(next))
+        temp-=1
+def factorization(n): 
+    res=[]
+    while n%2==0:
+        res.append(2)
+        n//=2
+    if n==1: return res
+    factor=3
+    while factor*factor<=n:
+        if n%factor==0:
+            n//=factor
+            res.append(factor)
+            factor=3
+        else:
+            factor+=1
+    res.append(n)
+    return res
+def gen_factors(n):
+    res=[n]
+    for i in range(2, int(n**0.5)+1):
+        if n%i==0:
+            res.append(i)
+            if i!= n//i:
+                res.append(n//i)
+    return res
+№9
+def two_sum(numbers, target):
+    for i in range(len(numbers)):
+        for j in range(i+1,len(numbers)):
+            if numbers[j]+numbers[i]==target:
+                return (i,j)
+№10
+def prime_factors(n):
+    res=[]
+    factor=2
+    while factor*factor<=n:
+        if n%factor==0:
+            res.append(factor)
+            n//=factor
+            factor=2
+        else:
+            factor+=1
+    return res if n==1 else res+[n]
